@@ -16,8 +16,8 @@ This repository was created using **uv**. To get started, follow these steps:
 
 1.  **Prepare your data**: Copy all text documents that need to be converted into the `data` folder. These files are assumed to be from the **Tafsir** database.
 2.  **Ensure correct naming**: It is crucial that the filenames for the subchapters follow this specific format:
-    `sc.<TAFSIR_ID>_<CHAPTER_ID>_<SUBCHAPTER_ID>.txt`
-    For example, a valid filename would be `sc.123_45_67.txt`.
+    `sc.<TAFSIR_ID>_<CHAPTER_ID>_<AYA_RANGE>.txt`
+    For example, a valid filename would be `sc.123_45_67_69.txt`.
 3.  **Run the script**: `uv run main.py`. If the filenames do not conform to this format, the parsing of the **Tafsir ID** and subsequent retrieval of metadata from `tafsir_metadata.csv` will fail.
 
 ## Version Information
