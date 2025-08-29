@@ -105,6 +105,39 @@ The `tafsir-metadata.csv` file contains bibliographic information for each Tafsi
 
 ## Development
 
+### Testing
+
+The project includes comprehensive unit tests for all major functions.
+
+#### Install test dependencies
+```bash
+uv pip install -e ".[test]"
+```
+
+#### Run tests with unittest
+```bash
+# Run all tests
+uv run python -m unittest discover tests
+
+# Run with verbose output
+uv run python -m unittest discover tests -v
+
+# Run specific test class
+uv run python -m unittest tests.test_main.TestParseTafsirId
+```
+
+#### Run tests with pytest (if installed)
+```bash
+# Run all tests
+uv run pytest
+
+# Run with coverage report
+uv run pytest --cov=main --cov-report=term-missing
+
+# Run specific test file
+uv run pytest tests/test_main.py
+```
+
 ### Linting and Formatting
 
 ```bash

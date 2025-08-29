@@ -1,11 +1,18 @@
 [project]
 name = "a01-passim-tafsir2json"
 version = "0.1.0"
-description = "Add your description here"
+description = "Transform Tafsir text documents to JSON Lines format for passim"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dotenv>=0.9.9",
     "pandas>=2.3.1",
+    "pytest>=8.4.1",
     "ruff>=0.12.9",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
 ]

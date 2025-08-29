@@ -13,6 +13,18 @@ This repository transforms collections of Tafsir (Islamic Qur'anic commentary) t
 uv run main.py
 ```
 
+### Testing
+```bash
+# Run all unit tests
+uv run python -m unittest discover tests -v
+
+# Install test dependencies for pytest
+uv pip install -e ".[test]"
+
+# Run with pytest and coverage (if installed)
+uv run pytest --cov=main --cov-report=term-missing
+```
+
 ### Linting
 ```bash
 uv run ruff check .
