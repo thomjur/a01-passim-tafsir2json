@@ -4,10 +4,13 @@ import uuid
 import json
 import pandas as pd
 import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 
 DATA_PATH = "data/"
 OUTPUT_PATH = "json/"
-METADATA_PATH = "tafsir-metadata.csv"
+METADATA_PATH = os.getenv("METADATA_PATH", "tafsir-metadata.csv")
 OUTPUT_FILE_PATH = os.path.join(OUTPUT_PATH, "passim_input.json")
 METADATA_EXISTS = True if os.path.exists(METADATA_PATH) else False
 logging.basicConfig(level=logging.DEBUG)
