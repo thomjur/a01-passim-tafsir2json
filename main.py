@@ -121,7 +121,11 @@ def create_json(file: io.TextIOWrapper):
         add_metadata(json_dict, file.name)
 
     # We copy the entire text from the file into the "text" field
+    # We also create a second column to keep the full text as 
+    # separate field for later, since passim might only keep
+    # certain parts of the text
     json_dict["text"] = file.read()
+    json_dict["original_text"] = json_dict["text"]
 
     # We dump the dict into the output folder
     with open(OUTPUT_FILE_PATH, "a", encoding="utf-8") as f:

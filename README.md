@@ -72,7 +72,8 @@ Each line in the output JSON contains:
   "author_name": "Shanqiti, al-",
   "author_death_dce": 1973,
   "author_place_of_death": "Mecca",
-  "text": "[Full Arabic text content]"
+  "text": "<Full Arabic text content>"
+  "original_text": "<Original text to keep for later>"
 }
 ```
 
