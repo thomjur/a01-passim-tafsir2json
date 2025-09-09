@@ -1,5 +1,7 @@
 import os
+from typing import Optional, Tuple
 import io
+import argparse
 import uuid
 import json
 import pandas as pd
@@ -27,15 +29,25 @@ else:
     print(f"{METADATA_PATH} file could not be found...")
 
 
-def main():
+def main(sura_id: Optional[int] = None, aya_id: Optional[int] = None) -> None:
+    """Process all text files under `DATA_PATH` and emit JSON lines.
+
+    If both `sura_id` and `aya_id` are provided, they are embedded in each
+    produced JSON object. If omitted, the JSON will be created without these
+    fields. This keeps CLI usage optional while enabling programmatic control.
+
+    Args:
+        sura_id: Optional sura (chapter) number to include in each record.
+        aya_id: Optional aya (verse) number to include in each record.
+    """
     for f in os.listdir(DATA_PATH):
         with open(os.path.join(DATA_PATH, f), "r") as file:
-            create_json(file)
+            create_json(file, sura_id=sura_id, aya_id=aya_id)
 
 
-def add_metadata(input_dict: dict, filename: str):
+def add_metadata(input_dict: dict, filename: str) -> None:
     '''Helper function to add metadata from tafsir-metadata.csv
-    to the JSON file'''
+    to the JSON file.'''
     # Get the tafsir id
     tafsir_id = parse_tafsir_id(filename)
     if tafsir_id == "":
@@ -90,8 +102,17 @@ def add_metadata(input_dict: dict, filename: str):
 
 
 def parse_tafsir_id(filename: str) -> str:
-    '''Helper function to parse tafsir id from document strings like
-    sc.1_34_44_46.txt (sc.<TAFSIR_ID>_<CHAPTER_ID>_<AYA_RANGE>)'''
+    '''Parse the Tafsir ID from a filename.
+
+    Expects names like: "sc.<TAFSIR_ID>_<CHAPTER_ID>_<AYA_START>_<AYA_END>.txt".
+
+    Args:
+        filename: The filename (or path) to parse.
+
+    Returns:
+        The Tafsir ID as a string if parsing is successful, otherwise an empty
+        string.
+    '''
     parts = filename.split("_")
     if len(parts) != 4:
         return ""
@@ -103,8 +124,22 @@ def parse_tafsir_id(filename: str) -> str:
     return parts[1]
 
 
-def create_json(file: io.TextIOWrapper):
-    '''Creating a JSON object for passim.'''
+def create_json(
+    file: io.TextIOWrapper,
+    *,
+    sura_id: Optional[int] = None,
+    aya_id: Optional[int] = None,
+) -> None:
+    '''Create and append a single JSON object for passim.
+
+    Reads the full content from `file`, enriches with metadata (if available),
+    and appends a JSON line to `OUTPUT_FILE_PATH`.
+
+    Args:
+        file: An open text file-like object positioned at the start.
+        sura_id: Optional sura (chapter) number to include.
+        aya_id: Optional aya (verse) number to include.
+    '''
     json_dict = {}
     # Creating a unique id
     _unique_uuid = str(uuid.uuid4())
@@ -127,10 +162,56 @@ def create_json(file: io.TextIOWrapper):
     json_dict["text"] = file.read()
     json_dict["original_text"] = json_dict["text"]
 
+    # Adding sura and aya ids if provided
+    if sura_id is not None:
+        json_dict["sura"] = sura_id
+    if aya_id is not None:
+        json_dict["aya"] = aya_id
     # We dump the dict into the output folder
     with open(OUTPUT_FILE_PATH, "a", encoding="utf-8") as f:
         f.write(json.dumps(json_dict) + "\n")
 
+def parse_arguments() -> Tuple[Optional[int], Optional[int]]:
+    """Parse optional CLI arguments for sura and aya numbers.
+
+    Returns a tuple of `(sura_id, aya_id)`. If neither option is provided,
+    both values will be `None`. If only one of the two is provided, the parser
+    will raise a usage error.
+
+    Returns:
+        A tuple of optional integers: (sura_id, aya_id).
+    """
+    parser = argparse.ArgumentParser(
+        description=(
+            "Convert A01 subchapter text files to JSONL for passim. "
+            "Optionally include --sura and --aya to tag records."
+        )
+    )
+
+    parser.add_argument(
+        "-s",
+        "--sura",
+        type=int,
+        dest="sura",
+        help="Sura (chapter) number to include in the output",
+    )
+    parser.add_argument(
+        "-a",
+        "--aya",
+        type=int,
+        dest="aya",
+        help="Aya (verse) number to include in the output",
+    )
+
+    args = parser.parse_args()
+
+    # Ensure both are provided together if either is set
+    if (args.sura is None) ^ (args.aya is None):
+        parser.error("--sura and --aya must be provided together or not at all.")
+
+    return args.sura, args.aya
+    
 
 if __name__ == "__main__":
-    main()
+    sura_id, aya_id = parse_arguments()
+    main(sura_id, aya_id)

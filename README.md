@@ -50,8 +50,20 @@ sc.<TAFSIR_ID>_<CHAPTER_ID>_<AYA_START>_<AYA_END>.txt
 
 ### 3. Run the Transformation
 
+Basic run (no sura/aya tagging):
+
 ```bash
 uv run main.py
+```
+
+Optionally include Sura and Aya to tag each record (both must be provided together):
+
+```bash
+# long flags
+uv run main.py --sura 2 --aya 255
+
+# short flags
+uv run main.py -s 2 -a 255
 ```
 
 The script will:
@@ -74,6 +86,8 @@ Each line in the output JSON contains:
   "author_place_of_death": "Mecca",
   "text": "<Full Arabic text content>"
   "original_text": "<Original text to keep for later>"
+  ["sura"]: 37,
+  ["aya"]: 23
 }
 ```
 
@@ -164,5 +178,7 @@ uv run ruff format .
 - Check that files contain readable text content
 
 ## Version Information
+
+**1.0.1** - Added sura and aya fields (optional). Type hints and docstrings added via Codex CLI.
 
 **1.0.0** - Initial release with core transformation functionality and metadata enrichment

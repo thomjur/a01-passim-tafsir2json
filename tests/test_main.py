@@ -11,6 +11,35 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import main
 
 
+class TestParseArguments(unittest.TestCase):
+    def test_no_args(self):
+        with patch('sys.argv', ['main.py']):
+            sura, aya = main.parse_arguments()
+            self.assertIsNone(sura)
+            self.assertIsNone(aya)
+
+    def test_only_sura_raises(self):
+        with patch('sys.argv', ['main.py', '--sura', '2']):
+            with self.assertRaises(SystemExit):
+                main.parse_arguments()
+
+    def test_only_aya_raises(self):
+        with patch('sys.argv', ['main.py', '--aya', '255']):
+            with self.assertRaises(SystemExit):
+                main.parse_arguments()
+
+    def test_both_args_long_flags(self):
+        with patch('sys.argv', ['main.py', '--sura', '2', '--aya', '255']):
+            sura, aya = main.parse_arguments()
+            self.assertEqual(sura, 2)
+            self.assertEqual(aya, 255)
+
+    def test_both_args_short_flags(self):
+        with patch('sys.argv', ['main.py', '-s', '3', '-a', '7']):
+            sura, aya = main.parse_arguments()
+            self.assertEqual(sura, 3)
+            self.assertEqual(aya, 7)
+
 class TestParseTafsirId(unittest.TestCase):
     def test_valid_filename(self):
         self.assertEqual(main.parse_tafsir_id("data/sc.123_45_67_89.txt"), "123")
