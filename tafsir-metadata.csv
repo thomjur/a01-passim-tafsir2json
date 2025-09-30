@@ -1,83 +1,83 @@
-"tafsir_id","tafsir_title","author_id","author_name","death_dce","place_of_death"
-28,"Irshad al-ʿaql al-salim ila mazaya al-kitab al-karim",1,"Abu al-Suʿud",1574,"Istanbul"
-19,"al-Bahr al-muhit",2,"Abu Hayyan",1345,"Cordoba"
-90,"al-Nahr al-madd min al-bahr al-muhit",2,"Abu Hayyan",1345,"Cordoba"
-97,"al-Taʾwilat al-najmiyya fi at-tafsir al-ʾishari al-sufi",3,"Ahmad ibn ʿUmar",1220,"Khwarazm"
-52,"Ruh al-maʿani: fi tafsir al-Qurʿan al-ʿazim wa al-sabʿ al-mathani",4,"Alusi, al-",1854,"Baghdad"
-47,"Tafsir al-Aʿqam",6,"Aʿqam, al-",1695,NULL
-71,"Aysar al-tafasir: tafsir asbab nuzul, ahadith, namadhij iʿrab",7,"Asʿad Hawmad",2022,"Lama"
-49,"Himyan al-zad ila dar al-maʿad",8,"Atfayyish",1914,NULL
-50,"Taysir al-tafsir li-l-qurʾan al-karim",8,"Atfayyish",1914,NULL
-13,"Maʿalim al-tanzil",10,"Baghawi, al-",1122,"Marw"
-4,"ʿAraʾis al-bayan fi haqaʾiq al-Qurʾan",11,"Baqli, al-",1210,NULL
-6,"Anwar al-tanzil wa asrar al-taʾwil",12,"Baydawi, al-",1319,NULL
-25,"Nazm al-durar fi tanasub al-ayat wa-l-suwar",13,"Biqaʿi, al-",1480,"Damascus"
-10,"Tafsir al-Qurʾan",14,"Firuzabadi, al-",1414,"Zabid"
-48,"Tafsir Furat al-Kufi",15,"Furat al-Kufi",900,NULL
-66,"Aysar al-tafasir li-kalam al-ʿali al-kabir",16,"Jazaʾiri, al-",2018,"Medina"
-95,"Tafsir al-Jilani",17,"Jilani, al-",1166,NULL
-42,"Tafsir Bayan al-saʿāda fi maqamat al-ʿibada",18,"Junabadi, al-",1909,"Tehran"
-51,"Jawahir at-tafsir: Anwar min bayan al-tanzil",19,"Khalili, al-",NULL,NULL
-18,"Lubab al-taʾwil fi maʿani al-tanzil",20,"Khazin, al-",1341,NULL
-44,"Tafsir al-Hibari",21,"Hibari, al-",899,NULL
-101,"Tafsir ʿAbd ar-Razzaq",22,"Himyari, al-",827,NULL
-45,"Tafsir kitab Allah al-ʿaziz",23,"Huwwari, al-",903,NULL
-16,"Tafsir al-Qurʾan",24,"Ibn ʿAbd al-Salam",1262,NULL
-104,"Tafsir al-Qurʾan al-ʿaziz",25,"Ibn Abi Zamanayn",1009,NULL
-24,"al-Lubab fi ʿulum al-kitab",26,"Ibn ʿAdil",1476,"Damascus"
-37,"al-Bahr al-madid fi tafsir al-Qurʾan al-majid",27,"Ibn ʿAjiba",1809,"Tétouan"
-15,"Zad al-masir fi ʿilm al-tafsir",28,"Ibn al-Jawzi",1200,"Baghdad"
-33,"Tafsir al-Qurʾan al-karim",29,"Ibn ʿArabi",1240,"Damascus"
-20,"Tafsir al-imam ʾibn ʿArafa",30,"Ibn ʿArafa",1401,"Tunis"
-55,"al-Tahrir wa-l-tanwir",31,"Ibn ʿAshur",1973,"La Marsa"
-14,"al-Muharrar al-wajiz fi tafsir al-kitab al-ʿaziz",32,"Ibn ʿAtiyya",1151,NULL
-88,"Kitab at-Tashil li-ʿulum al-tanzil",33,"Ibn Juzayy",1340,NULL
-7,"Tafsir al-Qurʾan al-ʿazim",34,"Ibn Kathir",1373,"Damascus"
-36,"Ruh al-bayan fi tafsir al-Qurʾan",35,"Haqqi al-Bursawi",1725,"Bursa"
-41,"al-Safi fi tafsir kalam Allah al-wafi",36,"Kashani, al-",1680,NULL
-33,"Tafsir al-Qurʾan al-karim",37,"Qashani, al-",1330,NULL
-65,"al-Muntakhab fi tafsir al-Qurʾan al-karim",38,"Lajnat al-Qurʾan wa-l-Sunna",2000,NULL
-8,"Tafsir al-Jalalayn",39,"Mahalli, al-",1505,"Cairo"
-92,"al-Hidaya ila bulugh al-nihaya",40,"Makki ibn Abu Talib",1045,"Cordoba"
-94,"Taʾwilat ahl al-sunna",41,"Maturidi, al-",944,"Samarkand"
-12,"al-Nukat wa-l-ʿuyun",42,"Mawardi, al-",1058,"Baghdad"
-78,"Tafsir Mujahid",43,"Mujahid",722,"Mecca"
-67,"Tafsir Muqatil ibn Sulayman",44,"Muqatil ibn Sulayman",767,"Basra"
-17,"Madarik al-tanzil wa haqaʾiq at-taʾwil",45,"Nasafi, al-",1311,NULL
-100,"Tafsir al-Nasaʾi",46,"Nasaʾi, al-",915,"Khorasan"
-22,"Gharaʾib al-Qurʾan wa raghaʾib al-furqan",47,"Nisaburi, al-",1328,NULL
-102,"Mahasin al-Taʾwil",48,"Qasimi, al-",1914,"Damascus"
-68,"Taysir al-tafsir",49,"Qattan, al-",1984,"Amman "
-38,"Tafsir al-Qurʾan",50,"Qummi, al-",919,NULL
-5,"al-Jamiʿ li-ahkam al-Qurʾan",51,"Qurtubi, al-",1273,"Cairo"
-31,"Lataʾif al-isharat bi-tafsir al-Qurʾan",52,"Qushayri, al-",1072,NULL
-103,"Tafsir al-Manar",53,"Rashid Rida",1935,"Cairo"
-32,"Mafatih al-ghayb",54,"Razi, al-",1209,"Herat"
-83,"Sawfat al-tafasir: tafsir li-l-Qurʾan al-karim",55,"Sabuni, al-",2021,NULL
-84,"Mukhtasar tafsir Ibn Kathir",55,"Sabuni, al-",2021,NULL
-85,"Rawaʾiʿ al-bayan tafsir ʿayat al-ahkam",55,"Sabuni, al-",2021,NULL
-98,"Taysir al-karim ar-rahman fi tafsir kalam al-mannan",58,"Saʿdi, al-",1957,NULL
-11,"Bahr al-ʿulum",59,"Samarqandi, al-",985,NULL
-79,"al-Durr al-masun fi ʿulum al-kitab al-maknun",60,"Samin al-Halabi, al-",1355,NULL
-54,"Adwaʾ al-bayan fi idah al-Qurʾan bi al-Qurʾan",61,"Shanqiti, al-",1973,"Mecca"
-76,"Khawatir Muhammad Mutawalli al-Shaʿrawi",62,"Shaʿrawi, al-",1998,NULL
-96,"Hashiyat al-Sawi ʿala tafsir al-Jalalayn",63,"Sawi, al-",1826,"Cairo"
-9,"Fath al-qadir",64,"Shawkani, al-",1834,"Sanaa"
-105,"Nuzhat al-qulub fi ʿalam al-ghuyub",65,"Sijistani, al-",942,"Nishapur"
-40,"al-Tafsir",66,"Shirazi, al-",1649,"Basra"
-30,"Haqaʾiq al-tafsir",67,"Sulami, al-",1021,"Nishapur"
-8,"Tafsir al-Jalalayn",68,"Suyuti, al-",1505,"Cairo"
-26,"ad-Durr al-manthur fi-l-tafsir bi-l-maʾthur",68,"Suyuti, al-",1505,"Cairo"
-23,"al-Ghawahir al-hisan fi tafsir al-Qurʾan",70,"Thaʿalibi, al-",1479,"Tunis"
-91,"Tafsir al-Qurʾan al-karim",71,"Tabarani, al-",971,"Isfahan"
-1,"Jamiʿ al-bayan an taʾwil ay al-Qurʾan",72,"Tabari, al-",923,"Baghdad"
-3,"Majmaʿ al-bayan fi tafsir al-Qurʾan",73,"Tabarsi, al-",1153,"Sabzawar"
-56,"al-Mizan fi tafsir al-Qurʾan",74,"Tabatabaʾi, al-",1981,NULL
-75,"al-Kashf wa-l-bayan fī tafsir al-Qurʾan",75,"Thaʿlabi, al-",1035,NULL
-57,"al-Tafsir al-wasit li al-Qurʾan al-Karim",76,"Tantawi, al-",2010,"Riyadh"
-99,"Tafsir Sufyan al-Thawri",77,"Thawri, al-",778,"Basra"
-39,"al-Tibyan fi tafsir al-Qurʾan",78,"Tusi, al-",1067,"Najaf"
-29,"Tafsir al-Qurʾan al-ʿazim",79,"Tustari, al-",896,"Basra"
-60,"al-Wajiz fi tafsir al-kitab al-ʿaziz",80,"Wahidi, al-",1075,"Nishapur"
-2,"al-Kashshaf ʿan haqaʾiq ghawamid al-tanzil wa-ʿuyun al-aqawil fi wujuh al-taʾwil",81,"Zamakhshari, al-",1144,"Gurganj"
-89,"Tafsir gharib al-Qurʾan",82,"Zayd ibn ʿAli",740,"Kufa"
+tafsir_id,tafsir_title,author_id,author_name,death_dce,place_of_death
+28,Irshad al-ʿaql al-salim ila mazaya al-kitab al-karim,1,Abu al-Suʿud,1574,Istanbul
+19,al-Bahr al-muhit,2,Abu Hayyan,1345,Cordoba
+90,al-Nahr al-madd min al-bahr al-muhit,2,Abu Hayyan,1345,Cordoba
+97,al-Taʾwilat al-najmiyya fi at-tafsir al-ʾishari al-sufi,3,Ahmad ibn ʿUmar,1220,Khwarazm
+52,Ruh al-maʿani: fi tafsir al-Qurʿan al-ʿazim wa al-sabʿ al-mathani,4,"Alusi, al-",1854,Baghdad
+47,Tafsir al-Aʿqam,6,"Aʿqam, al-",1695,NULL
+71,"Aysar al-tafasir: tafsir asbab nuzul, ahadith, namadhij iʿrab",7,Asʿad Hawmad,2022,Lama
+49,Himyan al-zad ila dar al-maʿad,8,Atfayyish,1914,NULL
+50,Taysir al-tafsir li-l-qurʾan al-karim,8,Atfayyish,1914,NULL
+13,Maʿalim al-tanzil,10,"Baghawi, al-",1122,Marw
+4,ʿAraʾis al-bayan fi haqaʾiq al-Qurʾan,11,"Baqli, al-",1210,NULL
+6,Anwar al-tanzil wa asrar al-taʾwil,12,"Baydawi, al-",1319,NULL
+25,Nazm al-durar fi tanasub al-ayat wa-l-suwar,13,"Biqaʿi, al-",1480,Damascus
+10,Tafsir al-Qurʾan,14,"Firuzabadi, al-",1414,Zabid
+48,Tafsir Furat al-Kufi,15,Furat al-Kufi,900,NULL
+66,Aysar al-tafasir li-kalam al-ʿali al-kabir,16,"Jazaʾiri, al-",2018,Medina
+95,Tafsir al-Jilani,17,"Jilani, al-",1166,NULL
+42,Tafsir Bayan al-saʿāda fi maqamat al-ʿibada,18,"Junabadi, al-",1909,Tehran
+51,Jawahir at-tafsir: Anwar min bayan al-tanzil,19,"Khalili, al-",-99999999,NULL
+18,Lubab al-taʾwil fi maʿani al-tanzil,20,"Khazin, al-",1341,NULL
+44,Tafsir al-Hibari,21,"Hibari, al-",899,NULL
+101,Tafsir ʿAbd ar-Razzaq,22,"Himyari, al-",827,NULL
+45,Tafsir kitab Allah al-ʿaziz,23,"Huwwari, al-",903,NULL
+16,Tafsir al-Qurʾan,24,Ibn ʿAbd al-Salam,1262,NULL
+104,Tafsir al-Qurʾan al-ʿaziz,25,Ibn Abi Zamanayn,1009,NULL
+24,al-Lubab fi ʿulum al-kitab,26,Ibn ʿAdil,1476,Damascus
+37,al-Bahr al-madid fi tafsir al-Qurʾan al-majid,27,Ibn ʿAjiba,1809,Tétouan
+15,Zad al-masir fi ʿilm al-tafsir,28,Ibn al-Jawzi,1200,Baghdad
+33,Tafsir al-Qurʾan al-karim,29,Ibn ʿArabi,1240,Damascus
+20,Tafsir al-imam ʾibn ʿArafa,30,Ibn ʿArafa,1401,Tunis
+55,al-Tahrir wa-l-tanwir,31,Ibn ʿAshur,1973,La Marsa
+14,al-Muharrar al-wajiz fi tafsir al-kitab al-ʿaziz,32,Ibn ʿAtiyya,1151,NULL
+88,Kitab at-Tashil li-ʿulum al-tanzil,33,Ibn Juzayy,1340,NULL
+7,Tafsir al-Qurʾan al-ʿazim,34,Ibn Kathir,1373,Damascus
+36,Ruh al-bayan fi tafsir al-Qurʾan,35,Haqqi al-Bursawi,1725,Bursa
+41,al-Safi fi tafsir kalam Allah al-wafi,36,"Kashani, al-",1680,NULL
+33,Tafsir al-Qurʾan al-karim,37,"Qashani, al-",1330,NULL
+65,al-Muntakhab fi tafsir al-Qurʾan al-karim,38,Lajnat al-Qurʾan wa-l-Sunna,2000,NULL
+8,Tafsir al-Jalalayn,39,"Mahalli, al-",1505,Cairo
+92,al-Hidaya ila bulugh al-nihaya,40,Makki ibn Abu Talib,1045,Cordoba
+94,Taʾwilat ahl al-sunna,41,"Maturidi, al-",944,Samarkand
+12,al-Nukat wa-l-ʿuyun,42,"Mawardi, al-",1058,Baghdad
+78,Tafsir Mujahid,43,Mujahid,722,Mecca
+67,Tafsir Muqatil ibn Sulayman,44,Muqatil ibn Sulayman,767,Basra
+17,Madarik al-tanzil wa haqaʾiq at-taʾwil,45,"Nasafi, al-",1311,NULL
+100,Tafsir al-Nasaʾi,46,"Nasaʾi, al-",915,Khorasan
+22,Gharaʾib al-Qurʾan wa raghaʾib al-furqan,47,"Nisaburi, al-",1328,NULL
+102,Mahasin al-Taʾwil,48,"Qasimi, al-",1914,Damascus
+68,Taysir al-tafsir,49,"Qattan, al-",1984,Amman 
+38,Tafsir al-Qurʾan,50,"Qummi, al-",919,NULL
+5,al-Jamiʿ li-ahkam al-Qurʾan,51,"Qurtubi, al-",1273,Cairo
+31,Lataʾif al-isharat bi-tafsir al-Qurʾan,52,"Qushayri, al-",1072,NULL
+103,Tafsir al-Manar,53,Rashid Rida,1935,Cairo
+32,Mafatih al-ghayb,54,"Razi, al-",1209,Herat
+83,Sawfat al-tafasir: tafsir li-l-Qurʾan al-karim,55,"Sabuni, al-",2021,NULL
+84,Mukhtasar tafsir Ibn Kathir,55,"Sabuni, al-",2021,NULL
+85,Rawaʾiʿ al-bayan tafsir ʿayat al-ahkam,55,"Sabuni, al-",2021,NULL
+98,Taysir al-karim ar-rahman fi tafsir kalam al-mannan,58,"Saʿdi, al-",1957,NULL
+11,Bahr al-ʿulum,59,"Samarqandi, al-",985,NULL
+79,al-Durr al-masun fi ʿulum al-kitab al-maknun,60,"Samin al-Halabi, al-",1355,NULL
+54,Adwaʾ al-bayan fi idah al-Qurʾan bi al-Qurʾan,61,"Shanqiti, al-",1973,Mecca
+76,Khawatir Muhammad Mutawalli al-Shaʿrawi,62,"Shaʿrawi, al-",1998,NULL
+96,Hashiyat al-Sawi ʿala tafsir al-Jalalayn,63,"Sawi, al-",1826,Cairo
+9,Fath al-qadir,64,"Shawkani, al-",1834,Sanaa
+105,Nuzhat al-qulub fi ʿalam al-ghuyub,65,"Sijistani, al-",942,Nishapur
+40,al-Tafsir,66,"Shirazi, al-",1649,Basra
+30,Haqaʾiq al-tafsir,67,"Sulami, al-",1021,Nishapur
+8,Tafsir al-Jalalayn,68,"Suyuti, al-",1505,Cairo
+26,ad-Durr al-manthur fi-l-tafsir bi-l-maʾthur,68,"Suyuti, al-",1505,Cairo
+23,al-Ghawahir al-hisan fi tafsir al-Qurʾan,70,"Thaʿalibi, al-",1479,Tunis
+91,Tafsir al-Qurʾan al-karim,71,"Tabarani, al-",971,Isfahan
+1,Jamiʿ al-bayan an taʾwil ay al-Qurʾan,72,"Tabari, al-",923,Baghdad
+3,Majmaʿ al-bayan fi tafsir al-Qurʾan,73,"Tabarsi, al-",1153,Sabzawar
+56,al-Mizan fi tafsir al-Qurʾan,74,"Tabatabaʾi, al-",1981,NULL
+75,al-Kashf wa-l-bayan fī tafsir al-Qurʾan,75,"Thaʿlabi, al-",1035,NULL
+57,al-Tafsir al-wasit li al-Qurʾan al-Karim,76,"Tantawi, al-",2010,Riyadh
+99,Tafsir Sufyan al-Thawri,77,"Thawri, al-",778,Basra
+39,al-Tibyan fi tafsir al-Qurʾan,78,"Tusi, al-",1067,Najaf
+29,Tafsir al-Qurʾan al-ʿazim,79,"Tustari, al-",896,Basra
+60,al-Wajiz fi tafsir al-kitab al-ʿaziz,80,"Wahidi, al-",1075,Nishapur
+2,al-Kashshaf ʿan haqaʾiq ghawamid al-tanzil wa-ʿuyun al-aqawil fi wujuh al-taʾwil,81,"Zamakhshari, al-",1144,Gurganj
+89,Tafsir gharib al-Qurʾan,82,Zayd ibn ʿAli,740,Kufa
