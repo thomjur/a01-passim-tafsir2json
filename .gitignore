@@ -12,3 +12,5 @@ wheels/
 # Other files
 data
 json/
+json_out/
+input/

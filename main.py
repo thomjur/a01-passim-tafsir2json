@@ -10,8 +10,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATA_PATH = "data/"
-OUTPUT_PATH = "json/"
+DATA_PATH = "input/"
+OUTPUT_PATH = "json_out/"
 METADATA_PATH = os.getenv("METADATA_PATH", "tafsir-metadata.csv")
 OUTPUT_FILE_PATH = os.path.join(OUTPUT_PATH, "passim_input.json")
 METADATA_EXISTS = True if os.path.exists(METADATA_PATH) else False
@@ -29,20 +29,24 @@ else:
     print(f"{METADATA_PATH} file could not be found...")
 
 
-def main(sura_id: Optional[int] = None, aya_id: Optional[int] = None) -> None:
+def main(series_id: Optional[str] = None, series_description: Optional[str] = None, sura_id: Optional[int] = None, aya_id: Optional[int] = None) -> None:
     """Process all text files under `DATA_PATH` and emit JSON lines.
 
+    Optionally include a series_id and a series_description field (both have
+    empty strings if no value was passed).
     If both `sura_id` and `aya_id` are provided, they are embedded in each
     produced JSON object. If omitted, the JSON will be created without these
     fields. This keeps CLI usage optional while enabling programmatic control.
 
     Args:
+        series_id: Optional series id (str).
+        series_description: Optional series description.
         sura_id: Optional sura (chapter) number to include in each record.
         aya_id: Optional aya (verse) number to include in each record.
     """
     for f in os.listdir(DATA_PATH):
         with open(os.path.join(DATA_PATH, f), "r") as file:
-            create_json(file, sura_id=sura_id, aya_id=aya_id)
+            create_json(file, series_id=series_id, series_description=series_description, sura_id=sura_id, aya_id=aya_id)
 
 
 def add_metadata(input_dict: dict, filename: str) -> None:
@@ -126,7 +130,8 @@ def parse_tafsir_id(filename: str) -> str:
 
 def create_json(
     file: io.TextIOWrapper,
-    *,
+    series_id: Optional[str] = None,
+    series_description: Optional[str] = None,
     sura_id: Optional[int] = None,
     aya_id: Optional[int] = None,
 ) -> None:
@@ -137,6 +142,8 @@ def create_json(
 
     Args:
         file: An open text file-like object positioned at the start.
+        series_id: Optional series id (str).
+        series_description: Optional series description.
         sura_id: Optional sura (chapter) number to include.
         aya_id: Optional aya (verse) number to include.
     '''
@@ -167,27 +174,49 @@ def create_json(
         json_dict["sura"] = sura_id
     if aya_id is not None:
         json_dict["aya"] = aya_id
+    if series_description is not None:
+        json_dict["series_description"] = series_description
+    else:
+        json_dict["series_description"] = ""
+    if series_id is not None:
+        json_dict["series_id"] = series_id
+    else:
+        json_dict["series_id"] = ""
+
     # We dump the dict into the output folder
     with open(OUTPUT_FILE_PATH, "a", encoding="utf-8") as f:
         f.write(json.dumps(json_dict) + "\n")
 
-def parse_arguments() -> Tuple[Optional[int], Optional[int]]:
-    """Parse optional CLI arguments for sura and aya numbers.
+def parse_arguments() -> Tuple[Optional[str], Optional[str], Optional[int], Optional[int]]:
+    """Parse optional CLI arguments. This currently includes sura and aya numbers,
+    a series title, and a description.
 
-    Returns a tuple of `(sura_id, aya_id)`. If neither option is provided,
-    both values will be `None`. If only one of the two is provided, the parser
-    will raise a usage error.
+    Returns a tuple of all values `(series_id, series_description, sura_id, aya_id)`.
+    If options are not provided, values will be `None`. If only one of the sura/aya values is provided,
+    the parser will raise a usage error.
 
     Returns:
-        A tuple of optional integers: (sura_id, aya_id).
+        A tuple of optional values: (series_id, series_description, sura_id, aya_id).
     """
     parser = argparse.ArgumentParser(
         description=(
             "Convert A01 subchapter text files to JSONL for passim. "
-            "Optionally include --sura and --aya to tag records."
+            "Optionally include --series-id, --series-description, --sura, and --aya to tag records."
         )
     )
 
+    parser.add_argument(
+        "--series-id",
+        type=str,
+        dest="seriesid",
+        help="A series id used to identify this cluster in the TRD web app",
+    )
+    parser.add_argument(
+        "--series-description",
+        type=str,
+        dest="description",
+        help="An optional description to share details on this series. Can be useful to share passim parameter values used to apply TRD on this series.",
+    )
     parser.add_argument(
         "-s",
         "--sura",
@@ -209,9 +238,9 @@ def parse_arguments() -> Tuple[Optional[int], Optional[int]]:
     if (args.sura is None) ^ (args.aya is None):
         parser.error("--sura and --aya must be provided together or not at all.")
 
-    return args.sura, args.aya
+    return args.seriesid, args.description, args.sura, args.aya
     
 
 if __name__ == "__main__":
-    sura_id, aya_id = parse_arguments()
-    main(sura_id, aya_id)
+    series_id, series_description, sura_id, aya_id = parse_arguments()
+    main(series_id, series_description, sura_id, aya_id)

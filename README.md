@@ -28,7 +28,7 @@ The script processes Arabic text files containing Tafsir subchapters and enriche
 
 ### 1. Prepare Your Data
 
-Place your Tafsir text files in the `data/` directory. Each file should contain the Arabic text of a single subchapter from a Tafsir work.
+Place your Tafsir text files in the `input/` directory. Each file should contain the Arabic text of a single subchapter from a Tafsir work.
 
 ### 2. File Naming Convention
 
@@ -56,21 +56,21 @@ Basic run (no sura/aya tagging):
 uv run main.py
 ```
 
-Optionally include Sura and Aya to tag each record (both must be provided together):
+Optionally include series ID, a series description, and Sura and Aya to tag each record (note that Sura and Aya values both must be provided together):
 
 ```bash
 # long flags
-uv run main.py --sura 2 --aya 255
+uv run main.py --sura 2 --aya 255 --series-id cluster-q1:6-new --series-description "This cluster includes subchapters commenting on Q1:6 using passim with n=20 and m=3."
 
 # short flags
 uv run main.py -s 2 -a 255
 ```
 
 The script will:
-- Process all files in the `data/` directory
+- Process all files in the `input/` directory
 - Extract the Tafsir ID from each filename
 - Enrich with metadata from `tafsir-metadata.csv`
-- Generate a JSON Lines file at `json/passim_input.json`
+- Generate a JSON Lines file at `json_output/passim_input.json`
 
 ## Output Format
 
@@ -86,6 +86,8 @@ Each line in the output JSON contains:
   "author_place_of_death": "Mecca",
   "text": "<Full Arabic text content>"
   "original_text": "<Original text to keep for later>"
+  "series_id": "<SERIES-ID> or <EMPTY>",
+  "series_description": "<SERIES-DESCRIPTION> or <EMPTY>,
   ["sura"]: 37,
   ["aya"]: 23
 }
@@ -178,6 +180,8 @@ uv run ruff format .
 - Check that files contain readable text content
 
 ## Version Information
+
+**1.0.2** - Added a series ID and a series description.
 
 **1.0.1** - Added sura and aya fields (optional). Type hints and docstrings added via Codex CLI.
 
