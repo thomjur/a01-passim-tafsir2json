@@ -14,7 +14,9 @@ import main
 class TestParseArguments(unittest.TestCase):
     def test_no_args(self):
         with patch('sys.argv', ['main.py']):
-            sura, aya = main.parse_arguments()
+            series_id, series_description, sura, aya = main.parse_arguments()
+            self.assertIsNone(series_id)
+            self.assertIsNone(series_description)
             self.assertIsNone(sura)
             self.assertIsNone(aya)
 
@@ -30,14 +32,34 @@ class TestParseArguments(unittest.TestCase):
 
     def test_both_args_long_flags(self):
         with patch('sys.argv', ['main.py', '--sura', '2', '--aya', '255']):
-            sura, aya = main.parse_arguments()
+            series_id, series_description, sura, aya = main.parse_arguments()
+            self.assertIsNone(series_id)
+            self.assertIsNone(series_description)
             self.assertEqual(sura, 2)
             self.assertEqual(aya, 255)
 
     def test_both_args_short_flags(self):
         with patch('sys.argv', ['main.py', '-s', '3', '-a', '7']):
-            sura, aya = main.parse_arguments()
+            series_id, series_description, sura, aya = main.parse_arguments()
+            self.assertIsNone(series_id)
+            self.assertIsNone(series_description)
             self.assertEqual(sura, 3)
+            self.assertEqual(aya, 7)
+
+    def test_series_args_only(self):
+        with patch('sys.argv', ['main.py', '--series-id', 'SID-001', '--series-description', 'My run']):
+            series_id, series_description, sura, aya = main.parse_arguments()
+            self.assertEqual(series_id, 'SID-001')
+            self.assertEqual(series_description, 'My run')
+            self.assertIsNone(sura)
+            self.assertIsNone(aya)
+
+    def test_series_args_with_sura_aya(self):
+        with patch('sys.argv', ['main.py', '--series-id', 'SID-XYZ', '--series-description', 'Desc', '--sura', '1', '--aya', '7']):
+            series_id, series_description, sura, aya = main.parse_arguments()
+            self.assertEqual(series_id, 'SID-XYZ')
+            self.assertEqual(series_description, 'Desc')
+            self.assertEqual(sura, 1)
             self.assertEqual(aya, 7)
 
 class TestParseTafsirId(unittest.TestCase):
@@ -124,7 +146,7 @@ class TestCreateJson(unittest.TestCase):
     
     @patch('main.METADATA_EXISTS', False)
     @patch('uuid.uuid4')
-    def test_create_json_without_metadata(self, mock_uuid):
+    def test_create_json_without_metadata_defaults(self, mock_uuid):
         mock_uuid.return_value = MagicMock(__str__=lambda x: "test-uuid-1234")
         
         test_content = "Test content for JSON creation"
@@ -140,11 +162,15 @@ class TestCreateJson(unittest.TestCase):
         self.assertEqual(result['id'], "tafsir.subchaptertest-uuid-1234")
         self.assertEqual(result['series'], "test-uuid-1234")
         self.assertEqual(result['text'], test_content)
+        self.assertIn('series_id', result)
+        self.assertIn('series_description', result)
+        self.assertEqual(result['series_id'], "")
+        self.assertEqual(result['series_description'], "")
     
     @patch('main.METADATA_EXISTS', True)
     @patch('main.add_metadata')
     @patch('uuid.uuid4')
-    def test_create_json_with_metadata(self, mock_uuid, mock_add_metadata):
+    def test_create_json_with_metadata_defaults(self, mock_uuid, mock_add_metadata):
         mock_uuid.return_value = MagicMock(__str__=lambda x: "test-uuid-5678")
         
         def add_test_metadata(input_dict, filename):
@@ -170,6 +196,29 @@ class TestCreateJson(unittest.TestCase):
         self.assertEqual(result['tafsir_id'], "28")
         self.assertEqual(result['tafsir_title'], "Test Tafsir")
         self.assertEqual(result['author_name'], "Test Author")
+        self.assertEqual(result['series_id'], "")
+        self.assertEqual(result['series_description'], "")
+
+    @patch('main.METADATA_EXISTS', False)
+    @patch('uuid.uuid4')
+    def test_create_json_with_series_fields(self, mock_uuid):
+        mock_uuid.return_value = MagicMock(__str__=lambda x: "test-uuid-7777")
+        
+        test_content = "Text with series fields"
+        mock_file = MagicMock()
+        mock_file.name = "test_file2.txt"
+        mock_file.read.return_value = test_content
+        
+        main.create_json(mock_file, series_id="SID-42", series_description="Experiment run A")
+        
+        with open(self.output_file, 'r') as f:
+            result = json.loads(f.readline())
+        
+        self.assertEqual(result['id'], "tafsir.subchaptertest-uuid-7777")
+        self.assertEqual(result['series'], "test-uuid-7777")
+        self.assertEqual(result['text'], test_content)
+        self.assertEqual(result['series_id'], "SID-42")
+        self.assertEqual(result['series_description'], "Experiment run A")
 
 
 class TestMainFunction(unittest.TestCase):
@@ -215,6 +264,32 @@ class TestMainFunction(unittest.TestCase):
             self.assertIn('series', data)
             self.assertIn('text', data)
             self.assertTrue(data['text'] in ["Content 1", "Content 2", "Content 3"])
+            # New fields exist with default empty values
+            self.assertIn('series_id', data)
+            self.assertIn('series_description', data)
+            self.assertEqual(data['series_id'], "")
+            self.assertEqual(data['series_description'], "")
+
+    @patch('main.METADATA_EXISTS', False)
+    def test_main_includes_series_fields_when_passed(self):
+        # Create files
+        filepaths = []
+        for idx in range(2):
+            path = os.path.join(self.data_dir, f"sc.10_1_{idx+1}_{idx+1}.txt")
+            with open(path, 'w') as f:
+                f.write(f"X{idx}")
+            filepaths.append(path)
+
+        # Run main with series args passed
+        main.main(series_id="S-100", series_description="Batch B")
+
+        with open(main.OUTPUT_FILE_PATH, 'r') as f:
+            lines = [json.loads(l) for l in f.readlines()]
+
+        self.assertEqual(len(lines), 2)
+        for obj in lines:
+            self.assertEqual(obj['series_id'], "S-100")
+            self.assertEqual(obj['series_description'], "Batch B")
 
 
 if __name__ == '__main__':
