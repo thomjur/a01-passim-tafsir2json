@@ -28,7 +28,7 @@ The script processes Arabic text files containing Tafsir subchapters and enriche
 
 ### 1. Prepare Your Data
 
-Place your Tafsir text files in the `input/` directory. Each file should contain the Arabic text of a single subchapter from a Tafsir work.
+Place your Tafsir text files in the `input/` directory. Each file should contain the Arabic text of a single subchapter from a Tafsir work. Note that there is a script `remove_quran_quotes.sh` in the root folder of this repo that deletes all Quranic quotes in the txt files in input/ and stores the cleaned files in a new directory called `no_quranic_quotes/`.
 
 ### 2. File Naming Convention
 
@@ -184,7 +184,9 @@ uv run ruff format .
 
 ## Version Information
 
-**1.03** - Added statistic generator (statsgen) script to get an overview of char/word distro between input files.
+**1.0.4** - Added a delete Quranic quotes script.
+
+**1.0.3** - Added statistic generator (statsgen) script to get an overview of char/word distro between input files.
 
 **1.0.2** - Added a series ID and a series description.
 
