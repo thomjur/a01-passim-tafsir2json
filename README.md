@@ -72,6 +72,9 @@ The script will:
 - Enrich with metadata from `tafsir-metadata.csv`
 - Generate a JSON Lines file at `json_output/passim_input.json`
 
+### (Optional:) Statsgen
+You can generate an overview of the input files (word/char counts) in `summary.txt` using `./statsgen.sh input/` in the root folder of this project.
+
 ## Output Format
 
 Each line in the output JSON contains:
@@ -176,10 +179,12 @@ uv run ruff format .
 - Verify the CSV file is properly formatted
 
 **Empty output file**
-- Ensure text files are placed in the `data/` directory
+- Ensure text files are placed in the `input/` directory
 - Check that files contain readable text content
 
 ## Version Information
+
+**1.03** - Added statistic generator (statsgen) script to get an overview of char/word distro between input files.
 
 **1.0.2** - Added a series ID and a series description.
 
