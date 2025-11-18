@@ -106,7 +106,7 @@ The `tafsir-metadata.csv` file contains bibliographic information for each Tafsi
 | `tafsir_title` | Full title of the Tafsir work |
 | `author_id` | Unique author identifier |
 | `author_name` | Author's name |
-| `death_dce` | Death year in DCE (Dionysian Common Era) |
+| `death_dce` | Death year in CE (Common Era) |
 | `place_of_death` | Location where author died |
 
 ### Sample Entries
